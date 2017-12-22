@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="pn_main" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="300.0" minWidth="500.0" prefHeight="300.0" prefWidth="500.0" style="-fx-padding: 50;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.andrezsegovia.dynamicCharacteristicsManager.Controller">
+   <padding>
+      <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+   </padding>
+   <children>
+      <AnchorPane minHeight="50.0" minWidth="500.0" prefHeight="50.0" prefWidth="500.0" style="-fx-background-color: rgba(33, 32, 29,0.5);">
+         <children>
+            <JFXButton fx:id="btn_import" layoutX="12.0" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="30.0" minWidth="100.0" onAction="#importFile" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F4993F;" text="Import" />
+            <JFXButton fx:id="btn_export" layoutX="122.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="30.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F4993F;" text="Export" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="50.0" minHeight="250.0" minWidth="500.0" prefHeight="250.0" prefWidth="500.0" style="-fx-background-color: rgba(33, 32, 29,0.2);">
+         <children>
+            <JFXTreeTableView fx:id="tb_data" minHeight="250.0" minWidth="500.0" prefHeight="250.0" prefWidth="500.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
