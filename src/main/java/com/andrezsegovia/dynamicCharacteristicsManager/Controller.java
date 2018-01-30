@@ -22,8 +22,8 @@ import java.util.ResourceBundle;
 
 public class Controller  implements Initializable{
 
-    private static final String QUERY_DELETE_BASE = "DELETE CARACTERISTICAS_DINAMICAS_M WHERE IDCARACTERISTICA = 0? AND IDTIPOINMUEBLE = 1X? AND IDTIPONEGOCIO = 1? AND IDSECCION = 2?;";
-    private static final String QUERY_INSERT_BASE = "INSERT INTO CARACTERISTICAS_DINAMICAS_M(IDCARACTERISTICA,IDTIPONEGOCIO,IDSECCION,ORDEN,CLASEVALIDACION,DATAMIN,DATAMAX,PLACEHOLDER,OBLIGATORIA,VALORXDEFECTO,IDTIPOINMUEBLE) VALUES(0?,1?,2?,3?,4?,5?,6?,7?,8?,9?,1X?);";
+    private static final String QUERY_DELETE_BASE = "DELETE CARACTERISTICAS_DINAMICAS_O WHERE IDCARACTERISTICA = 0? AND IDTIPOINMUEBLE = 1X? AND IDTIPONEGOCIO = 1? AND IDSECCION = 2?;";
+    private static final String QUERY_INSERT_BASE = "INSERT INTO CARACTERISTICAS_DINAMICAS_O(IDCARACTERISTICA,IDTIPONEGOCIO,IDSECCION,ORDEN,CLASEVALIDACION,DATAMIN,DATAMAX,PLACEHOLDER,OBLIGATORIA,VALORXDEFECTO,IDTIPOINMUEBLE) VALUES(0?,1?,2?,3?,4?,5?,6?,7?,8?,9?,1X?);";
     		
 
     private enum IDTIPOINMUEBLE {
@@ -163,65 +163,65 @@ public class Controller  implements Initializable{
 								break;
 							case 10: //CASAS
 								if(cellValue != null && cellValue.toLowerCase().equals("x")) {
-									lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
-									lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<CASA>>");
-									lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.CASA.value));
+									//lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
+									//lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<CASA>>");
+									//lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.CASA.value));
 									lines.add(newQueryInsert.replace("1X?", IDTIPOINMUEBLE.CASA.value));
 								}							
 								break;
 							case 11: //APARTAMENTOS
 								if(cellValue != null && cellValue.toLowerCase().equals("x")) {
-									lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
-									lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<APARTAMENTO>>");
-									lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.APARTAMENTO.value));
+									//lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
+									//lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<APARTAMENTO>>");
+									//lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.APARTAMENTO.value));
 									lines.add(newQueryInsert.replace("1X?", IDTIPOINMUEBLE.APARTAMENTO.value));
 								}	
 								break;
 							case 12: //OFICINAS
 								if(cellValue != null && cellValue.toLowerCase().equals("x")) {
-									lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
-									lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<OFICINA>>");
-									lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.OFICINA.value));
+									//lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
+									//lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<OFICINA>>");
+									//lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.OFICINA.value));
 									lines.add(newQueryInsert.replace("1X?", IDTIPOINMUEBLE.OFICINA.value));
 								}	
 								break;
 							case 13: //BODEGA
 								if(cellValue != null && cellValue.toLowerCase().equals("x")) {
-									lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
-									lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<BODEGA>>");
-									lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.BODEGA.value));
+									//lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
+									//lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<BODEGA>>");
+									//lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.BODEGA.value));
 									lines.add(newQueryInsert.replace("1X?", IDTIPOINMUEBLE.BODEGA.value));
 								}	
 								break;
 							case 14: //CONSULTORIO
 								if(cellValue != null && cellValue.toLowerCase().equals("x")) {
-									lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
-									lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<CONSULTORIO>>");
-									lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.CONSULTORIO.value));
+									//lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
+									//lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<CONSULTORIO>>");
+									//lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.CONSULTORIO.value));
 									lines.add(newQueryInsert.replace("1X?", IDTIPOINMUEBLE.CONSULTORIO.value));
 								}	
 								break;
 							case 15: //LOCALCOMERCIAL
 								if(cellValue != null && cellValue.toLowerCase().equals("x")) {
-									lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
-									lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<LOCAL COMERCIAL>>");
-									lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.LOCALCOMERCIAL.value));
+									//lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
+									//lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<LOCAL COMERCIAL>>");
+									//lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.LOCALCOMERCIAL.value));
 									lines.add(newQueryInsert.replace("1X?", IDTIPOINMUEBLE.LOCALCOMERCIAL.value));
 								}	
 								break;
 							case 16: //LOTE O CASALOTE
 								if(cellValue != null && cellValue.toLowerCase().equals("x")) {
-									lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
-									lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<LOTE O CASALOTE>>");
-									lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.LOTEOCASALOTE.value));
+									//lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
+									//lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<LOTE O CASALOTE>>");
+									//lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.LOTEOCASALOTE.value));
 									lines.add(newQueryInsert.replace("1X?", IDTIPOINMUEBLE.LOTEOCASALOTE.value));
 								}	
 								break;
 							case 17: //CASA CAMPESTRE
 								if(cellValue != null && cellValue.toLowerCase().equals("x")) {
-									lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
-									lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<CASA CAMPESTE O FINA>>");
-									lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.FINCA.value));
+									//lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
+									//lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<CASA CAMPESTE O FINA>>");
+									//lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.FINCA.value));
 									lines.add(newQueryInsert.replace("1X?", IDTIPOINMUEBLE.FINCA.value));
 								}	
 								break;
