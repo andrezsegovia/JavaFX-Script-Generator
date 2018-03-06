@@ -22,8 +22,8 @@ import java.util.ResourceBundle;
 
 public class Controller  implements Initializable{
 
-    private static final String QUERY_DELETE_BASE = "DELETE CARACTERISTICAS_DINAMICAS_O WHERE IDCARACTERISTICA = 0? AND IDTIPOINMUEBLE = 1X? AND IDTIPONEGOCIO = 1? AND IDSECCION = 2?;";
-    private static final String QUERY_INSERT_BASE = "INSERT INTO CARACTERISTICAS_DINAMICAS_O(IDCARACTERISTICA,IDTIPONEGOCIO,IDSECCION,ORDEN,CLASEVALIDACION,DATAMIN,DATAMAX,PLACEHOLDER,OBLIGATORIA,VALORXDEFECTO,IDTIPOINMUEBLE) VALUES(0?,1?,2?,3?,4?,5?,6?,7?,8?,9?,1X?);";
+    private static final String QUERY_DELETE_BASE = "DELETE CARACTERISTICAS_DINAMICAS_O WHERE IDCARACTERISTICA = {0} AND IDTIPOINMUEBLE = {X} AND IDTIPONEGOCIO = {1} AND IDSECCION = {2};";
+    private static final String QUERY_INSERT_BASE = "INSERT INTO CARACTERISTICAS_DINAMICAS_O(IDCARACTERISTICA,IDTIPONEGOCIO,IDSECCION,ORDEN,CLASEVALIDACION,DATAMIN,DATAMAX,PLACEHOLDER,OBLIGATORIA,VALORXDEFECTO,PROCESO,IDTIPOINMUEBLE) VALUES({0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{X});";
     		
 
     private enum IDTIPOINMUEBLE {
@@ -113,116 +113,123 @@ public class Controller  implements Initializable{
 	                    	                        
 	                        switch (cellIndex) {
 							case 0: //IDCARACTERISTICA
-								newQueryDelete = newQueryDelete.replace("0?", "'".concat(cellValue).concat("'"));
-								newQueryInsert = newQueryInsert.replace("0?", "'".concat(cellValue).concat("'"));
+								newQueryDelete = newQueryDelete.replace("{0}", "'".concat(cellValue).concat("'"));
+								newQueryInsert = newQueryInsert.replace("{0}", "'".concat(cellValue).concat("'"));
 								break;
 							case 1: //IDTIPONEGOCIO
-								newQueryDelete = newQueryDelete.replace("1?", cellValue);
-								newQueryInsert = newQueryInsert.replace("1?", cellValue);
+								newQueryDelete = newQueryDelete.replace("{1}", cellValue);
+								newQueryInsert = newQueryInsert.replace("{1}", cellValue);
 								break;
 							case 2: //IDSECCION
-								newQueryDelete = newQueryDelete.replace("2?", cellValue);
-								newQueryInsert = newQueryInsert.replace("2?", cellValue);
+								newQueryDelete = newQueryDelete.replace("{2}", cellValue);
+								newQueryInsert = newQueryInsert.replace("{2}", cellValue);
 								break;
 							case 3: //ORDEN
-								newQueryInsert = newQueryInsert.replace("3?", cellValue);
+								newQueryInsert = newQueryInsert.replace("{3}", cellValue);
 								break;
 							case 4: //CLASEVALIDACION
 								if(cellValue.equals("null")) {
-									newQueryInsert = newQueryInsert.replace("4?",cellValue);;
+									newQueryInsert = newQueryInsert.replace("{4}",cellValue);;
 								}else {
-									newQueryInsert = newQueryInsert.replace("4?", "'".concat(cellValue).concat("'"));
+									newQueryInsert = newQueryInsert.replace("{4}", "'".concat(cellValue).concat("'"));
 								}							
 								break;
 							case 5: //DATAMIN
-								newQueryInsert = newQueryInsert.replace("5?", cellValue);
+								newQueryInsert = newQueryInsert.replace("{5}", cellValue);
 								break;
 							case 6: //DATAMAX
-								newQueryInsert = newQueryInsert.replace("6?", cellValue);
+								newQueryInsert = newQueryInsert.replace("{6}", cellValue);
 								break;
 							case 7: //PLACEHOLDER
 								if(cellValue.equals("null")) {
-									newQueryInsert = newQueryInsert.replace("7?",cellValue);
+									newQueryInsert = newQueryInsert.replace("{7}",cellValue);
 								}else {
-									newQueryInsert = newQueryInsert.replace("7?", "'".concat(cellValue).concat("'"));
+									newQueryInsert = newQueryInsert.replace("{7}", "'".concat(cellValue).concat("'"));
 								}
 								break;
 							case 8: //OBLIGATORIA
 								if(cellValue.equals("null")) {
-									newQueryInsert = newQueryInsert.replace("8?",cellValue);;
+									newQueryInsert = newQueryInsert.replace("{8}",cellValue);;
 								}else {
-									newQueryInsert = newQueryInsert.replace("8?", "'".concat(cellValue).concat("'"));
+									newQueryInsert = newQueryInsert.replace("{8}", "'".concat(cellValue).concat("'"));
 								}
 								break;
 							case 9: //VALORXDEFECTO
 								if(cellValue.equals("null")) {
-									newQueryInsert = newQueryInsert.replace("9?",cellValue);;
+									newQueryInsert = newQueryInsert.replace("{9}",cellValue);;
 								}else {
-									newQueryInsert = newQueryInsert.replace("9?", "'".concat(cellValue).concat("'"));
+									newQueryInsert = newQueryInsert.replace("{9}", "'".concat(cellValue).concat("'"));
 								}
 								break;
-							case 10: //CASAS
+							case 10: //PROCESO
+								if(cellValue.equals("null")) {
+									newQueryInsert = newQueryInsert.replace("{10}",cellValue);;
+								}else {
+									newQueryInsert = newQueryInsert.replace("{10}", "'".concat(cellValue).concat("'"));
+								}
+								break;
+							case 11: //CASAS
 								if(cellValue != null && cellValue.toLowerCase().equals("x")) {
 									//lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
 									//lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<CASA>>");
-									//lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.CASA.value));
-									lines.add(newQueryInsert.replace("1X?", IDTIPOINMUEBLE.CASA.value));
+									//lines.add(newQueryDelete.replace("{X}", IDTIPOINMUEBLE.CASA.value));
+									lines.add(newQueryInsert.replace("{X}", IDTIPOINMUEBLE.CASA.value));
 								}							
 								break;
-							case 11: //APARTAMENTOS
+							case 12: //APARTAMENTOS
 								if(cellValue != null && cellValue.toLowerCase().equals("x")) {
 									//lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
 									//lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<APARTAMENTO>>");
-									//lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.APARTAMENTO.value));
-									lines.add(newQueryInsert.replace("1X?", IDTIPOINMUEBLE.APARTAMENTO.value));
+									//lines.add(newQueryDelete.replace("{X}", IDTIPOINMUEBLE.APARTAMENTO.value));
+									lines.add(newQueryInsert.replace("{X}", IDTIPOINMUEBLE.APARTAMENTO.value));
 								}	
 								break;
-							case 12: //OFICINAS
+							case 13: //OFICINAS
 								if(cellValue != null && cellValue.toLowerCase().equals("x")) {
 									//lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
 									//lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<OFICINA>>");
-									//lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.OFICINA.value));
-									lines.add(newQueryInsert.replace("1X?", IDTIPOINMUEBLE.OFICINA.value));
+									//lines.add(newQueryDelete.replace("{X}", IDTIPOINMUEBLE.OFICINA.value));
+									lines.add(newQueryInsert.replace("{X}", IDTIPOINMUEBLE.OFICINA.value));
 								}	
 								break;
-							case 13: //BODEGA
+							case 14: //BODEGA
 								if(cellValue != null && cellValue.toLowerCase().equals("x")) {
 									//lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
 									//lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<BODEGA>>");
-									//lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.BODEGA.value));
-									lines.add(newQueryInsert.replace("1X?", IDTIPOINMUEBLE.BODEGA.value));
+									//lines.add(newQueryDelete.replace("{X}", IDTIPOINMUEBLE.BODEGA.value));
+									lines.add(newQueryInsert.replace("{X}", IDTIPOINMUEBLE.BODEGA.value));
 								}	
 								break;
-							case 14: //CONSULTORIO
+							case 15: //CONSULTORIO
 								if(cellValue != null && cellValue.toLowerCase().equals("x")) {
 									//lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
 									//lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<CONSULTORIO>>");
-									//lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.CONSULTORIO.value));
-									lines.add(newQueryInsert.replace("1X?", IDTIPOINMUEBLE.CONSULTORIO.value));
+									//lines.add(newQueryDelete.replace("{X}", IDTIPOINMUEBLE.CONSULTORIO.value));
+									lines.add(newQueryInsert.replace("{X}", IDTIPOINMUEBLE.CONSULTORIO.value));
 								}	
 								break;
-							case 15: //LOCALCOMERCIAL
+							case 16: //LOCALCOMERCIAL
 								if(cellValue != null && cellValue.toLowerCase().equals("x")) {
 									//lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
 									//lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<LOCAL COMERCIAL>>");
-									//lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.LOCALCOMERCIAL.value));
-									lines.add(newQueryInsert.replace("1X?", IDTIPOINMUEBLE.LOCALCOMERCIAL.value));
+									//lines.add(newQueryDelete.replace("{X}", IDTIPOINMUEBLE.LOCALCOMERCIAL.value));
+									lines.add(newQueryInsert.replace("{X}", IDTIPOINMUEBLE.LOCALCOMERCIAL.value));
 								}	
 								break;
-							case 16: //LOTE O CASALOTE
+							case 17: //LOTE O CASALOTE
 								if(cellValue != null && cellValue.toLowerCase().equals("x")) {
 									//lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
 									//lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<LOTE O CASALOTE>>");
-									//lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.LOTEOCASALOTE.value));
-									lines.add(newQueryInsert.replace("1X?", IDTIPOINMUEBLE.LOTEOCASALOTE.value));
+									//lines.add(newQueryDelete.replace("{X}", IDTIPOINMUEBLE.LOTEOCASALOTE.value));
+									lines.add(newQueryInsert.replace("{X}", IDTIPOINMUEBLE.LOTEOCASALOTE.value));
 								}	
 								break;
-							case 17: //CASA CAMPESTRE
+							case 18: //CASA CAMPESTRE
 								if(cellValue != null && cellValue.toLowerCase().equals("x")) {
 									//lines.add("\nPROMPT QUERY INSERT No " + ++queryIndex);
 									//lines.add("PROMPT INSERT CHARACTERISTIC FOR TYPE RELEASTE <<CASA CAMPESTE O FINA>>");
-									//lines.add(newQueryDelete.replace("1X?", IDTIPOINMUEBLE.FINCA.value));
-									lines.add(newQueryInsert.replace("1X?", IDTIPOINMUEBLE.FINCA.value));
+									//lines.add(newQueryDelete.replace("{X}", IDTIPOINMUEBLE.FINCA.value));
+									lines.add(newQueryInsert.replace("{X}", IDTIPOINMUEBLE.FINCA.value));
 								}	
 								break;
 	                        }
